@@ -103,5 +103,5 @@ theme: landscape
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: 'git'
-  branch: master
+  branch: gh-pages
   repo: https://alex10151.github.io/ReactLikeFool/
