@@ -1,12 +1,15 @@
 sudo: false
 language: node_js
 node_js:
-  - 10 # use nodejs v10 LTS
+  - 14
 cache: npm
 branches:
   only:
     - master # build master branch only
+install: # 解决yarn报错问题
+  - yarn
 script:
+  - hexo clean
   - hexo generate # generate static files
 deploy:
   provider: pages
