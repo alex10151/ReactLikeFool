@@ -76,7 +76,7 @@
 
 
       <h1 id="h1">还剩0秒</h1>
-      <div  id='container2' style="height: 30px; width:0px; padding: 50px; background-color: lightsalmon">
+      <div  id='container2' style="height: 30px; width:0px; margin: 50px; background-color: lightsalmon">
       </div>
 
 
@@ -95,14 +95,14 @@
         const slice = 500 / time;
         let counter = 0;
         timer = setInterval(()=>{
-          if(counter === time) {
-            clearInterval(timer);
-            return;
-          }
           const d = document.getElementById('container2');
           d.style.width = +d.style.width.split('px')[0] + slice + 'px';
           const d2 = document.getElementById('h1');
           d2.innerHTML = '还剩' + (time-counter) + '秒';
+          if(counter === time) {
+            clearInterval(timer);
+            return;
+          }
           counter = counter +1;
         }, 1000);
         });
@@ -111,6 +111,8 @@
           clearInterval(timer);
           const d = document.getElementById('container2');
           d.style.width = '0px';
+          const d2 = document.getElementById('h1');
+          d2.innerHTML = '还剩0秒';
         });
 
       </script>
