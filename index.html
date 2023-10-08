@@ -76,7 +76,7 @@
 
 
       <h1 id="h1">还剩0秒</h1>
-      <div  id='container2' style="height: 30px; width:0px; margin: 50px; background-color: lightsalmon">
+      <div  id='container2' style="height: 30px; width:0vw; margin: 50px; background-color: lightsalmon">
       </div>
 
 
@@ -89,14 +89,23 @@
       <script>
 
         let timer = null;
+
+        function reset() {
+          clearInterval(timer);
+          const d = document.getElementById('container2');
+          d.style.width = '0vw';
+          const d2 = document.getElementById('h1');
+          d2.innerHTML = '还剩0秒';
+        }
         document.getElementById('btn1').addEventListener('click',(ev)=> {
+        reset();
         const dom = document.getElementById('input');
         const time = +dom.value;
-        const slice = 500 / time;
+        const slice = 80 / time;
         let counter = 0;
         timer = setInterval(()=>{
           const d = document.getElementById('container2');
-          d.style.width = +d.style.width.split('px')[0] + slice + 'px';
+          d.style.width = +d.style.width.split('vw')[0] + slice + 'vw';
           const d2 = document.getElementById('h1');
           d2.innerHTML = '还剩' + (time-counter) + '秒';
           if(counter === time) {
@@ -108,11 +117,7 @@
         });
         
         document.getElementById('btn2').addEventListener('click',(ev)=> {
-          clearInterval(timer);
-          const d = document.getElementById('container2');
-          d.style.width = '0px';
-          const d2 = document.getElementById('h1');
-          d2.innerHTML = '还剩0秒';
+          reset();
         });
 
       </script>
