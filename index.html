@@ -104,14 +104,14 @@
         const slice = 80 / time;
         let counter = 0;
         timer = setInterval(()=>{
-          const d = document.getElementById('container2');
-          d.style.width = +d.style.width.split('vw')[0] + slice + 'vw';
           const d2 = document.getElementById('h1');
           d2.innerHTML = '还剩' + (time-counter) + '秒';
           if(counter === time) {
             clearInterval(timer);
             return;
           }
+          const d = document.getElementById('container2');
+          d.style.width = +d.style.width.split('vw')[0] + slice + 'vw';
           counter = counter +1;
         }, 1000);
         });
