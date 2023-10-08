@@ -76,7 +76,7 @@
 
 
       <h1 id="h1">还剩0秒</h1>
-      <div  id='container' style="height: 30px; width:0px; margin-top: 300px; color: lightsalmon">
+      <div  id='container2' style="height: 30px; width:0px; margin-top: 300px; color: lightsalmon">
       </div>
 
 
@@ -99,17 +99,17 @@
             clearInterval(timer);
             return;
           }
-          const d = document.getElementById('container');
+          const d = document.getElementById('container2');
           d.style.width = +d.style.width.split('px')[0] + slice + 'px';
           const d2 = document.getElementById('h1');
-          d2.innerHTML = '还剩' +time-counter + '秒';
+          d2.innerHTML = '还剩' + +time-counter + '秒';
           counter = counter +1;
         }, 1000);
         });
         
         document.getElementById('btn2').addEventListener('click',(ev)=> {
           clearInterval(timer);
-          const d = document.getElementById('container');
+          const d = document.getElementById('container2');
           d.style.width = '0px';
         });
 
