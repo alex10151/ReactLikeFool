@@ -76,7 +76,7 @@
 
 
       <h1 id="h1">还剩0秒</h1>
-      <div  id='container2' style="height: 30px; width:0px; margin-top: 300px; color: lightsalmon">
+      <div  id='container2' style="height: 30px; width:0px; padding: 50px; background-color: lightsalmon">
       </div>
 
 
@@ -91,7 +91,7 @@
         let timer = null;
         document.getElementById('btn1').addEventListener('click',(ev)=> {
         const dom = document.getElementById('input');
-        const time = dom.value;
+        const time = +dom.value;
         const slice = 500 / time;
         let counter = 0;
         timer = setInterval(()=>{
@@ -102,7 +102,7 @@
           const d = document.getElementById('container2');
           d.style.width = +d.style.width.split('px')[0] + slice + 'px';
           const d2 = document.getElementById('h1');
-          d2.innerHTML = '还剩' + +time-counter + '秒';
+          d2.innerHTML = '还剩' + (time-counter) + '秒';
           counter = counter +1;
         }, 1000);
         });
