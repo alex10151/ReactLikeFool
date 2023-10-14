@@ -113,7 +113,6 @@
             requestAnimationFrame(f);
           }
         }
-        requestAnimationFrame(f);
 
         timer = setInterval(()=>{
           const d2 = document.getElementById('h1');
@@ -124,6 +123,8 @@
           }
           counter = counter +1;
         }, 1000);
+
+        requestAnimationFrame(f);
         });
         
         document.getElementById('btn2').addEventListener('click',(ev)=> {
