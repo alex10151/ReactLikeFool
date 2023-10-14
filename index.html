@@ -124,7 +124,9 @@
           counter = counter +1;
         }, 1000);
 
-        requestAnimationFrame(f);
+        setTimeout(()=> {
+          requestAnimationFrame(f);
+        });
         });
         
         document.getElementById('btn2').addEventListener('click',(ev)=> {
