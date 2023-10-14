@@ -99,10 +99,22 @@
         }
         document.getElementById('btn1').addEventListener('click',(ev)=> {
         reset();
+
         const dom = document.getElementById('input');
         const time = +dom.value;
-        const slice = 80 / time;
+        const slice = Math.floor(80 / (time * 1000 / 16));
         let counter = 0;
+        
+
+        const f = ()=> {
+          const d = document.getElementById('container2');
+          d.style.width = +d.style.width.split('vw')[0] + slice + 'vw';
+          if( timer && counter !== time) {
+            requestAnimationFrame(f);
+          }
+        }
+        requestAnimationFrame(f);
+
         timer = setInterval(()=>{
           const d2 = document.getElementById('h1');
           d2.innerHTML = '还剩' + (time-counter) + '秒';
@@ -110,8 +122,6 @@
             clearInterval(timer);
             return;
           }
-          const d = document.getElementById('container2');
-          d.style.width = +d.style.width.split('vw')[0] + slice + 'vw';
           counter = counter +1;
         }, 1000);
         });
