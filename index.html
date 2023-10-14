@@ -106,14 +106,16 @@
 
         const dom = document.getElementById('input');
         const time = +dom.value;
-        const slice = Math.floor(80 / (time * 1000 / 16));
+        const slice = 80 / (time * 1000 / 16);
         let counter = 0;
         
 
         const f = ()=> {
           const d = document.getElementById('container2');
-          d.style.width = +d.style.width.split('vw')[0] + slice + 'vw';
-          console.error('>>>>',timer, counter, time, d);
+          const prevWidth = +d.style.width.split('vw')[0];
+          if(prevWidth + slice <= 80) {
+            d.style.width = +d.style.width.split('vw')[0] + slice + 'vw';
+          }
           if( timer && counter !== time) {
             rafRef = requestAnimationFrame(f);
           }
