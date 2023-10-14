@@ -89,9 +89,13 @@
       <script>
 
         let timer = null;
+        let rafRef = null;
 
         function reset() {
           clearInterval(timer);
+          cancelAnimationFrame(rafRef);
+          timer = null;
+          rafRef = null;
           const d = document.getElementById('container2');
           d.style.width = '0vw';
           const d2 = document.getElementById('h1');
@@ -109,9 +113,9 @@
         const f = ()=> {
           const d = document.getElementById('container2');
           d.style.width = +d.style.width.split('vw')[0] + slice + 'vw';
-          console.error('>>>>',timer, counter, time);
+          console.error('>>>>',timer, counter, time, d);
           if( timer && counter !== time) {
-            requestAnimationFrame(f);
+            rafRef = requestAnimationFrame(f);
           }
         }
 
@@ -126,7 +130,7 @@
         }, 1000);
 
         setTimeout(()=> {
-          requestAnimationFrame(f);
+          rafRef = requestAnimationFrame(f);
         });
         });
         
