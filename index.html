@@ -109,6 +109,7 @@
         const f = ()=> {
           const d = document.getElementById('container2');
           d.style.width = +d.style.width.split('vw')[0] + slice + 'vw';
+          console.error('>>>>',timer, counter, time);
           if( timer && counter !== time) {
             requestAnimationFrame(f);
           }
